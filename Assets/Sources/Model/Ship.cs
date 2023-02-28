@@ -7,6 +7,8 @@ namespace Asteroids.Model
     {
         public Ship(Vector2 position, float rotation) : base(position, rotation) { }
 
+        public uint _health = 3;
+        
         private readonly float _unitsPerSecond = 0.001f;
         private readonly float _maxSpeed = 0.0015f;
         private readonly float _secondsToStop = 1f;
@@ -35,6 +37,11 @@ namespace Asteroids.Model
             Rotate(direction * deltaTime * _degreesPerSecond);
         }
 
+        public void GettingHurt()
+        {
+            _health -= 1;
+        }
+
         public void Update(float deltaTime)
         {
             Move(Acceleration);
@@ -49,5 +56,6 @@ namespace Asteroids.Model
 
             MoveTo(nextPosition);
         }
+        
     }
 }
