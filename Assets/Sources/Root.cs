@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Asteroids.Model;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,11 +20,30 @@ public class Root : MonoBehaviour
     public LaserGun LaserGun => _laserGun;
     public LaserGunRollback LaserGunRollback => _laserGunRollback;
 
+    public List<Nlo> _nlo = new List<Nlo>();
+    public List<Nlo> _bigNlo = new List<Nlo>();
+
     public void DisableShip()
     {
         _shipModel.GettingHurt();
         if (_shipModel._health == 0)
             _shipInputRouter.OnDisable();
+    }
+
+    public void AddNlo(Nlo nlo, bool big)
+    {
+        if (big)
+            _bigNlo.Add(nlo);
+        else
+            _nlo.Add(nlo);
+    }
+
+    public void RemoveNlo(int index, bool big)
+    {
+        if (big)
+            _bigNlo.RemoveAt(index);
+        else
+            _nlo.RemoveAt(index);
     }
 
     private void Awake()

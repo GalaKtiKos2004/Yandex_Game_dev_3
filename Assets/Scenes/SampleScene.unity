@@ -1441,6 +1441,7 @@ MonoBehaviour:
   _asteroidTemplate: {fileID: -5592899209094444788, guid: 7b512be35dd70a740b70ad3f11129f6b, type: 3}
   _asteroidPartTemplate: {fileID: 2496268463148620810, guid: f9673b8bf2b901049947fef6ed94e495, type: 3}
   _nloTemplate: {fileID: -3177811691921934883, guid: 227e6133de9075a44aa0ad05e2399431, type: 3}
+  _bigNloTemplate: {fileID: 8657782798606923610, guid: 6750e5ed19f23e74abcc0d9910292a14, type: 3}
 --- !u!114 &1581576390
 MonoBehaviour:
   m_ObjectHideFlags: 0

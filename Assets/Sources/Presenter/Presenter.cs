@@ -4,7 +4,7 @@ using UnityEngine;
 public class Presenter : MonoBehaviour
 {
     private Camera _camera;
-    private Transformable _model;
+    public Transformable _model;
 
     private IUpdatable _updatable = null;
 

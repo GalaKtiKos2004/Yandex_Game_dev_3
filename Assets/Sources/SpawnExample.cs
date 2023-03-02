@@ -13,7 +13,7 @@ public class SpawnExample : MonoBehaviour
     {
         int newIndex = (int)(Time.time / _secondsPerIndex);
 
-        if(newIndex > _index)
+        if (newIndex > _index)
         {
             _index = newIndex;
             OnTick();
@@ -26,7 +26,35 @@ public class SpawnExample : MonoBehaviour
 
         if (chance < 20)
         {
-            _factory.CreateNlo(new Nlo(_init.Ship, GetRandomPositionOutsideScreen(), Config.NloSpeed));
+            if (_init._bigNlo.Count == 0)
+            {
+                Nlo nlo = new Nlo(_init.Ship, GetRandomPositionOutsideScreen(), Config.NloSpeed);
+                _factory.CreateNlo(nlo);
+                _init.AddNlo(nlo, false);
+            }
+            else
+            {
+                Nlo nlo = new Nlo(_init._bigNlo[Random.Range(0, _init._bigNlo.Count - 1)],
+                    GetRandomPositionOutsideScreen(), Config.NloSpeed);
+                _factory.CreateNlo(nlo);
+                _init.AddNlo(nlo, false);
+            }
+        }
+        else if (chance < 40)
+        {
+            if (_init._nlo.Count == 0)
+            {
+                Nlo nlo = new Nlo(_init.Ship, GetRandomPositionOutsideScreen(), Config.NloSpeed);
+                _factory.CreateBigNlo(nlo);
+                _init.AddNlo(nlo, true);
+            }
+            else
+            {
+                Nlo nlo = new Nlo(_init._nlo[Random.Range(0, _init._nlo.Count - 1)], GetRandomPositionOutsideScreen(),
+                    Config.NloSpeed);
+                _factory.CreateBigNlo(nlo);
+                _init.AddNlo(nlo, true);
+            }
         }
         else
         {
