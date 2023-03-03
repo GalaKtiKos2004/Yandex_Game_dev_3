@@ -27,7 +27,9 @@ public class Root : MonoBehaviour
     {
         _shipModel.GettingHurt();
         if (_shipModel._health == 0)
-            _shipInputRouter.OnDisable();
+        {
+            OnDisable();
+        }
     }
 
     public void AddNlo(Nlo nlo, bool big)
@@ -79,6 +81,8 @@ public class Root : MonoBehaviour
         _baseGun.Shot -= OnShot;
         _laserGun.Shot -= OnShot;
         _shipModel.Destroying -= OnShipDestroying;
+        
+        OnShipDestroying();
     }
 
     private void Update()
